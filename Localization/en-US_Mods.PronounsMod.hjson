@@ -1,1 +1,29 @@
+Configs: {
+	FormatConfig: {
+		DisplayName: Format Config (Chat)
 
+		Format: {
+			Label: Chat Format
+			Tooltip: How pronouns will be displayed in the chat
+		}
+	}
+
+	PronounFormat: {
+		Tooltip: ""
+
+		Normal: {
+			Label: Normal: <player-name - they/them> 
+			Tooltip: ""
+		}
+
+		Short: {
+			Label: Short: <player-name - they> 
+			Tooltip: ""
+		}
+
+		None: {
+			Label: None: <player-name>
+			Tooltip: ""
+		}
+	}
+}

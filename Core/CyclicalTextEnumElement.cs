@@ -1,0 +1,76 @@
+using System;
+using System.Collections.Generic;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using Terraria;
+using Terraria.GameContent;
+using Terraria.ModLoader.Config;
+using Terraria.ModLoader.Config.UI;
+using Terraria.UI.Chat;
+ 
+namespace PronounsMod.Core;
+
+// https://github.com/gold-meridian/daybreak-mod/blob/master/src/Daybreak/Common/Features/TmlConfig/CyclicalTextEnum.cs - used with permission from Zoey
+
+public sealed class CyclicalTextEnumAttribute<T>() : CustomModConfigItemAttribute(typeof(CyclicalTextEnumElement<T>))
+	where T : struct, Enum;
+
+internal sealed class CyclicalTextEnumElement<T> : ConfigElement<T>
+	where T : struct, Enum
+{
+	private readonly List<PropertyFieldWrapper> enumFields = [];
+	private readonly T[] values = Enum.GetValues<T>();
+
+	/// <inheritdoc />
+	public override void OnBind()
+	{
+		base.OnBind();
+
+		OnLeftClick += (_, _) => Value = Value.NextEnum();
+		OnRightClick += (_, _) => Value = Value.PreviousEnum();
+        
+		enumFields.Clear();
+        
+		var names = Enum.GetNames(typeof(T));
+		foreach (var name in names)
+		{
+			if (MemberInfo.Type.GetField(name) is not { } enumField)
+			{
+				continue;
+			}
+
+			enumFields.Add(new PropertyFieldWrapper(enumField));
+		}
+	}
+
+	/// <inheritdoc />
+	protected override void DrawSelf(SpriteBatch spriteBatch)
+	{
+		base.DrawSelf(spriteBatch);
+
+		var valueIdx = Array.IndexOf(values, Value);
+		if (valueIdx == -1)
+		{
+			return;
+		}
+
+		var dims = this.GetDimensions();
+		var text = ConfigManager.GetLocalizedLabel(enumFields[valueIdx]);
+		var font = FontAssets.ItemStack.Value;
+		var textSize = font.MeasureString(text);
+		var origin = new Vector2(textSize.X, 0);
+		var position = new Vector2(dims.X + dims.Width - 8f, dims.Y + 8f);
+		var baseScale = new Vector2(0.8f);
+
+		ChatManager.DrawColorCodedStringWithShadow(
+			spriteBatch,
+			font,
+			text,
+			position,
+			Color.White,
+			0f,
+			origin,
+			baseScale
+		);
+	}
+}

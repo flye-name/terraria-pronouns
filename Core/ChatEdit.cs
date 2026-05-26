@@ -8,6 +8,7 @@ using Terraria.GameContent.UI.Chat;
 using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.UI;
+using Terraria.UI.Chat;
 
 namespace PronounsMod.Core;
 
@@ -39,13 +40,20 @@ public class ChatEdit : ModSystem
 	private static void ReplaceTag(byte author, ref string text2)
 	{
 		Player player = Main.player[author];
-		if (player.TryGetModPlayer<PlayerPronoun>(out var modPlayer))
+		PronounFormat format = ModContent.GetInstance<FormatConfig>().Format;
+		if (format != PronounFormat.None && player.TryGetModPlayer<PlayerPronoun>(out var modPlayer))
 		{
 			string tag = NameTagHandler.GenerateTag(player.name);
 
 			text2 = text2.Remove(0, tag.Length);
-					
-			string pronounTag = $" - [c/b2aacc:{modPlayer.Pronoun.ShortFormat}]";
+
+			string pronoun = format switch // switch case redundant but more formats may be added.
+			{
+				PronounFormat.Normal => modPlayer.Pronoun.ChatFormat,
+				PronounFormat.Short => modPlayer.Pronoun.Subject
+			};
+			
+			string pronounTag = $" - [c/b2aacc:{pronoun}]";
 			tag = $"<{player.name + pronounTag}>";
 					
 			text2 = tag + text2;

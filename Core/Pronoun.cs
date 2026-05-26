@@ -10,7 +10,7 @@ public readonly struct Pronoun
 	public readonly string Possessive { get; }
 
 	public readonly string FullFormat => String.Join("/", [Subject, Object, Possessive]).ApplyCase(LetterCasing.Title); 
-	public readonly string ShortFormat => String.Join("/", [Subject, Object]); 
+	public readonly string ChatFormat => String.Join("/", [Subject, Object]); 
 
 	public Pronoun(string s, string o, string p)
 	{
