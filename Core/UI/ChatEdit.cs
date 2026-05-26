@@ -9,8 +9,9 @@ using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.UI;
 using Terraria.UI.Chat;
+using PronounsMod.Core.Config;
 
-namespace PronounsMod.Core;
+namespace PronounsMod.Core.UI;
 
 public class ChatEdit : ModSystem
 {

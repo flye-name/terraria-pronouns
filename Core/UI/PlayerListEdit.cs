@@ -8,7 +8,7 @@ using Terraria.GameContent.UI.Elements;
 using Terraria.IO;
 using Terraria.ModLoader;
 
-namespace PronounsMod.Core;
+namespace PronounsMod.Core.UI;
 
 public class PlayerListEdit : ModSystem
 {

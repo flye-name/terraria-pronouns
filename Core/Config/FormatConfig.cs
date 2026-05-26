@@ -1,7 +1,7 @@
 using System.ComponentModel;
 using Terraria.ModLoader.Config;
 
-namespace PronounsMod.Core;
+namespace PronounsMod.Core.Config;
 
 public enum PronounFormat
 {

@@ -8,7 +8,7 @@ using Terraria.ModLoader.Config;
 using Terraria.ModLoader.Config.UI;
 using Terraria.UI.Chat;
  
-namespace PronounsMod.Core;
+namespace PronounsMod.Core.Config;
 
 // https://github.com/gold-meridian/daybreak-mod/blob/master/src/Daybreak/Common/Features/TmlConfig/CyclicalTextEnum.cs - used with permission from Zoey
 
