@@ -12,12 +12,12 @@ Configs: {
 		Tooltip: ""
 
 		Normal: {
-			Label: Normal: <player-name - they/them> 
+			Label: Normal: <player-name - they/them>
 			Tooltip: ""
 		}
 
 		Short: {
-			Label: Short: <player-name - they> 
+			Label: Short: <player-name - they>
 			Tooltip: ""
 		}
 

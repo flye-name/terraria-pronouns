@@ -47,7 +47,7 @@ public class ChatEdit : ModSystem
 
 			text2 = text2.Remove(0, tag.Length);
 
-			string pronoun = format switch // switch case redundant but more formats may be added.
+			string pronoun = format switch // switch redundant but more formats may be added.
 			{
 				PronounFormat.Normal => modPlayer.Pronoun.ChatFormat,
 				PronounFormat.Short => modPlayer.Pronoun.Subject
