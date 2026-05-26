@@ -1,0 +1,14 @@
+.vs/
+.vscode/
+.idea/
+.tml-build/
+
+bin/
+obj/
+
+*.user
+
+TemplateEngineHost/
+
+# Binaries
+*.fxc

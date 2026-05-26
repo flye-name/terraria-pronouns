@@ -1,0 +1,3 @@
+displayName = tPronouns (Player Pronouns)
+author = flye
+version = 1.0
