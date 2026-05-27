@@ -1,9 +1,12 @@
 using System.Collections.Generic;
+using Terraria.Localization;
 
 namespace PronounsMod.Core;
 
 public static class Pronouns
 {
+	public static readonly LocalizedText Any = Language.GetText("Mods.PronounsMod.Any");
+	
 	public static readonly Pronoun None = new("  ", "  ", "  ");
 	public static readonly Pronoun They = new("they", "them", "their");
 	public static readonly Pronoun She = new("she", "her", "her");

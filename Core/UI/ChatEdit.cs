@@ -42,22 +42,28 @@ public class ChatEdit : ModSystem
 	{
 		Player player = Main.player[author];
 		PronounFormat format = ModContent.GetInstance<FormatConfig>().Format;
-		if (format != PronounFormat.None && player.TryGetModPlayer<PlayerPronoun>(out var modPlayer))
+		
+		if (format == PronounFormat.None || !player.TryGetModPlayer<PlayerPronoun>(out var modPlayer))
+			return;
+
+		PronounMode mode = modPlayer.Mode;
+		if (mode == PronounMode.None || mode == PronounMode.PlayerName)
+			return;
+		
+		string tag = NameTagHandler.GenerateTag(player.name);
+		text2 = text2.Remove(0, tag.Length);
+
+		string pronoun = format switch // switch redundant but more formats may be added.
 		{
-			string tag = NameTagHandler.GenerateTag(player.name);
-
-			text2 = text2.Remove(0, tag.Length);
-
-			string pronoun = format switch // switch redundant but more formats may be added.
-			{
-				PronounFormat.Normal => modPlayer.Pronoun.ChatFormat,
-				PronounFormat.Short => modPlayer.Pronoun.Subject
-			};
-			
-			string pronounTag = $" - [c/b2aacc:{pronoun}]";
-			tag = $"<{player.name + pronounTag}>";
-					
-			text2 = tag + text2;
-		}
+			PronounFormat.Normal => modPlayer.Pronoun.ChatFormat,
+			PronounFormat.Short => modPlayer.Pronoun.Subject
+		};
+		
+		if (mode == PronounMode.Any)
+			pronoun = Pronouns.Any.Value;
+		
+		string pronounTag = $" - [c/b2aacc:{pronoun}]";
+		tag = $"<{player.name + pronounTag}>";
+		text2 = tag + text2;
 	}
 }

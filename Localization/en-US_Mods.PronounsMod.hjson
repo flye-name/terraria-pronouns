@@ -1,3 +1,5 @@
+Any: any
+
 Configs: {
 	FormatConfig: {
 		DisplayName: Format Config (Chat)

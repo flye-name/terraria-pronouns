@@ -46,7 +46,7 @@ public class PlayerListEdit : ModSystem
 					break;
 				
 				case PronounMode.Any:
-					text = text + " " + "[c/b2aacc:(any)]";
+					text = text + " " + $"[c/b2aacc:({Pronouns.Any.Value})]";
 					break;
 			}
 		}
