@@ -39,7 +39,16 @@ public class PlayerListEdit : ModSystem
 		Player player = self._data._player;
 		if (player.TryGetModPlayer<PlayerPronoun>(out var modPlayer))
 		{
-			text = text + " " + $"[c/b2aacc:({modPlayer.Pronoun.FullFormat})]";
+			switch (modPlayer.Mode)
+			{
+				case PronounMode.Specific:
+					text = text + " " + $"[c/b2aacc:({modPlayer.Pronoun.FullFormat})]";
+					break;
+				
+				case PronounMode.Any:
+					text = text + " " + "[c/b2aacc:(any)]";
+					break;
+			}
 		}
 	}
 }
