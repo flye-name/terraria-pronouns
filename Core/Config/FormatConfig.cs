@@ -3,7 +3,7 @@ using Terraria.ModLoader.Config;
 
 namespace PronounsMod.Core.Config;
 
-public enum PronounFormat
+public enum PronounFormat : byte
 {
 	Normal,
 	Short,

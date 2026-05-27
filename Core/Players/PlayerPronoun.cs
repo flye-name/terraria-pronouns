@@ -6,7 +6,8 @@ namespace PronounsMod.Core.Players;
 
 public partial class PlayerPronoun : ModPlayer
 {
-	public Pronoun Pronoun = new("UNLOADED", "UNLOADED", "UNLOADED");
+	public Pronoun Pronoun = Pronouns.None;
+	public PronounMode Mode = PronounMode.None;
 
 	public override void PostUpdate()
 	{
