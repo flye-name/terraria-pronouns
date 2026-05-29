@@ -1,19 +1,14 @@
-using System;
-using Microsoft.Xna.Framework;
 using MonoMod.Cil;
 using PronounsMod.Core.Players;
 using Terraria;
 using Terraria.Chat;
 using Terraria.GameContent.UI.Chat;
-using Terraria.Localization;
 using Terraria.ModLoader;
-using Terraria.UI;
-using Terraria.UI.Chat;
 using PronounsMod.Core.Config;
 
-namespace PronounsMod.Core.UI;
+namespace PronounsMod.Core;
 
-public class ChatEdit : ModSystem
+public sealed class PlayerNames : ModSystem
 {
 	public override void Load()
 	{
