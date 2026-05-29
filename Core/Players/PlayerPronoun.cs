@@ -12,6 +12,7 @@ public partial class PlayerPronoun : ModPlayer
 	public override void PostUpdate()
 	{
 		base.PostUpdate();
-		Pronoun = Pronouns.TheyThem;
+        Mode = PronounMode.None;
+		Pronoun = Pronouns.She;
 	}
 }
