@@ -6,7 +6,7 @@ using Terraria.GameContent.UI.Chat;
 using Terraria.ModLoader;
 using PronounsMod.Core.Config;
 
-namespace PronounsMod.Core.Chat;
+namespace PronounsMod.Core;
 
 public sealed class PlayerNames : ModSystem
 {

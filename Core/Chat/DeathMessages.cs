@@ -5,7 +5,7 @@ using Terraria.DataStructures;
 using Terraria.Localization;
 using Terraria.ModLoader;
 
-namespace PronounsMod.Core.Chat;
+namespace PronounsMod.Core;
 
 // TODO:
 // - Respect other mods that may add more arguments to vanilla death messages
