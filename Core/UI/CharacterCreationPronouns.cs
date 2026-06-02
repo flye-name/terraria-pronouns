@@ -1,6 +1,10 @@
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using MonoMod.Cil;
+using ReLogic.Content;
+using Terraria.GameContent.UI.Elements;
 using Terraria.GameContent.UI.States;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.UI;
 
@@ -8,61 +12,52 @@ namespace PronounsMod.Core.UI;
 
 public class CharacterCreationEdit : ModSystem
 {
-	public static readonly UICharacterCreation.CategoryId PronounsCategoryId = UICharacterCreation.CategoryId.Count; 
+	public static readonly UICharacterCreation.CategoryId PronounsCategoryId = UICharacterCreation.CategoryId.Count;
+
 	public override void Load()
 	{
-		IL_UICharacterCreation.BuildPage += ResizeMainPanel;
-		IL_UICharacterCreation.MakeCategoriesBar += AppendPronounsCategoryButton;
+		IL_UICharacterCreation.MakeInfoMenu += AddPronounsField;
 	}
 
-	#region resize panel
-	void ResizeMainPanel(ILContext il)
+	void AddPronounsField(ILContext il)
 	{
 		ILCursor c = new(il);
 
-		c.GotoNext(MoveType.After, i => i.MatchStloc1()); // set uIElement
-
-		c.EmitLdloca(1); // uIElement
-
-		c.EmitDelegate(InnerResizeMainPanel);
-	}
-
-	void InnerResizeMainPanel(ref UIElement element)
-	{
-		element.Width.Set(550, 0);
-	}
-	#endregion
-	
-	#region tab button
-	void AppendPronounsCategoryButton(ILContext il)
-	{
-		ILCursor c = new(il);
-
-		c.GotoNext(MoveType.After, i => i.MatchStloc1()); // xPositionPerId initialized to 48f 
-
-		c.EmitLdcR4(-267.5f);
-		c.EmitStloc0(); // set xPositionStart to -265f
-
-		c.EmitLdcR4(49f);
-		c.EmitStloc1(); // set xPositionPerId to 49f
+		c.GotoNext(MoveType.After, i => i.MatchNewobj<UICharacterNameButton>()); 
 		
-		c.GotoNext(MoveType.Before, i => i.MatchCall<UICharacterCreation>(nameof(UICharacterCreation.UpdateColorPickers)));
-		c.GotoPrev(MoveType.Before, i => i.MatchLdarg0()); // move to where the last tab is appended
+		c.GotoNext(MoveType.After, i => i.MatchStfld<UIElement>(nameof(UIElement.Width)));
+		c.GotoPrev(MoveType.Before, i => i.MatchLdcR4(1)); // Width percentage
+
+		c.Remove();
+		c.EmitLdcR4(0.75f);
+		
+		c.GotoNext(MoveType.After, i => i.MatchStfld<UIElement>(nameof(UIElement.HAlign))); 
+		c.GotoPrev(MoveType.Before, i => i.MatchLdcR4(0.5f)); // HAlign
+
+		c.Remove();
+		c.EmitLdcR4(0);
+
+		c.GotoNext(MoveType.After, i => i.MatchCallvirt<UIElement>(nameof(UIElement.Append)));
 
 		c.EmitLdarg0();
-		c.EmitLdarg1(); // categoryContainer
-		c.EmitLdloc0(); // xPositionStart
-		c.EmitLdloc1(); // xPositionPerId
+		c.EmitLdloc0(); // uIElement
 
-		c.EmitDelegate(InnerAppendPronounsCategoryButton);
+		c.EmitDelegate(InnerAddPronounsField);
 	}
 
-	void InnerAppendPronounsCategoryButton(UICharacterCreation self, UIElement categoryContainer, float xPositionStart, float xPositionPerId)
+	void InnerAddPronounsField(UICharacterCreation self, UIElement uIElement)
 	{
-		UIElement element = self.CreatePickerWithoutClick(PronounsCategoryId, "Images/UI/CharCreation/HairStyle_Hair", xPositionStart, xPositionPerId);
-		categoryContainer.Append(element);
+		UICharacterNameButton pronounsButton = new UICharacterNameButton(Language.GetText("Mods.PronounsMod.UI.Pronouns"), Language.GetText("Mods.PronounsMod.UI.Blank"));
+		pronounsButton.Width = StyleDimension.FromPixelsAndPercent(-5f, 0.25f);
+		pronounsButton.HAlign = 1f;
+		foreach (var child in pronounsButton.Children)
+		{
+			if (child is UIText)
+				child.HAlign = 0.25f;
+		}
+		pronounsButton.RecalculateChildren();
+		uIElement.Append(pronounsButton);
 	}
-	#endregion
 }
 
 public class CharacterCreationPronouns

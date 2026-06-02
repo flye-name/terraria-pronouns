@@ -45,12 +45,12 @@ DeathText: {
 	# Still uses vanilla localization keys despite not being gendered as named
 	Teleport_2_Male: {
 		$parentVal: "{0}'s legs appeared where {3} head should be."
-		PlayerName: "Legs appeared where {0}'s head should be."
+		PlayerName: Legs appeared where {0}'s head should be.
 	}
 
 	Teleport_2_Female: {
 		$parentVal: "{0}'s legs appeared where {3} head should be."
-		PlayerName: "Legs appeared where {0}'s head should be."
+		PlayerName: Legs appeared where {0}'s head should be.
 	}
 
 	Fell_1: {

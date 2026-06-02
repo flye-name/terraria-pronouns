@@ -1,5 +1,10 @@
 Any: any
-UI.EditPronouns: Edit Pronouns
+
+UI: {
+	EditPronouns: Edit Pronouns
+	Pronouns: "[c/b2aacc:Pronouns]"
+	Blank: " "
+}
 
 Configs: {
 	FormatConfig: {
