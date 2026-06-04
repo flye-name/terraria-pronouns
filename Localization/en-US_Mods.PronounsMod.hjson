@@ -1,9 +1,16 @@
 Any: any
+PlayerNameOnly: player name only
 
 UI: {
 	EditPronouns: Edit Pronouns
 	Pronouns: "[c/b2aacc:Pronouns]"
 	Blank: " "
+	Presets: Presets
+	EnterPronouns: Entered Pronouns
+	AnyInChat: (Chat pronouns will be displayed as 'any')
+	EnterSubject: Enter subject pronoun (he, she, they, etc.)
+	EnterObject: Enter object pronoun (him, her, them, etc.)
+	EnterPossessive: Enter possessive pronoun (his, her, their, etc.)
 }
 
 Configs: {

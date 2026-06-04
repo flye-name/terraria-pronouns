@@ -1,13 +1,17 @@
+using System.Linq;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using MonoMod.Cil;
+using PronounsMod.Core.Players;
 using ReLogic.Content;
 using Terraria;
 using Terraria.Audio;
 using Terraria.GameContent.UI.Elements;
 using Terraria.GameContent.UI.States;
+using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
+using Terraria.ModLoader.UI;
 using Terraria.UI;
 
 namespace PronounsMod.Core.UI;
@@ -25,13 +29,17 @@ public class CharacterCreationEdit : ModSystem
 			orig(self);
 			foreach (var child in self.Children)
 			{
-				if (child is UICharacterCreationPronouns)
+				if (child is UICharacterCreationPronounsPanel)
 				{
 					self.RemoveChild(child);
 					break;
 				}
 			}
 		};
+		
+		Assets.EmptyPanel.Asset.SetToLoadingState();
+		Assets.FullPanel.Asset.SetToLoadingState();
+		Assets.PanelOutline.Asset.SetToLoadingState();
 	}
 
 	void AddPronounsField(ILContext il)
@@ -62,12 +70,13 @@ public class CharacterCreationEdit : ModSystem
 
 	void InnerAddPronounsField(UICharacterCreation self, UIElement uIElement)
 	{
-		UICharacterCreationPronouns pronounPanel = new UICharacterCreationPronouns()
+		UICharacterCreationPronounsPanel pronounPanel = new UICharacterCreationPronounsPanel(self._player, self)
 		{
 			Width = StyleDimension.FromPixels(350f),
-			Height = StyleDimension.FromPixels(172),
-			Top = StyleDimension.FromPixels(328f),
+			Height = StyleDimension.FromPixels(310),
+			Top = StyleDimension.FromPixels(268),
 			HAlign = .5f,
+			VAlign = 0f,
 			Left = StyleDimension.FromPixelsAndPercent(10f, 0.25f)
 		};
 		
@@ -98,16 +107,4 @@ public class CharacterCreationEdit : ModSystem
 	}
 }
 
-public class UICharacterCreationPronouns : UIElement
-{
-	public UICharacterCreationPronouns()
-	{
-		UIPanel panel = new UIPanel()
-		{
-			Width = StyleDimension.FromPercent(1),
-			Height = StyleDimension.FromPercent(1),
-			BackgroundColor = new Color(33, 43, 79) * 0.8f
-		};
-		Append(panel);	
-	}
-}
+

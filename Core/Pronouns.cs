@@ -12,6 +12,7 @@ public static class Pronouns
 	public static readonly Pronoun She = new("she", "her", "her");
 	public static readonly Pronoun He = new("he", "him", "his");
 	public static readonly Pronoun It = new("it", "it", "its");
+	public static readonly string AnyPreview = "(any)";
 
 	public static readonly List<Pronoun> Neo = new();
 }
