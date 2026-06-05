@@ -4,9 +4,17 @@
 	<PropertyGroup>
 		<LangVersion>preview</LangVersion>
 	</PropertyGroup>
+	
+	<ItemGroup>
+		<Reference Include="GMT">
+			<HintPath>lib/GMT.dll</HintPath>
+		</Reference>
+		
+		<Publicize Include="tModLoader;ReLogic;FNA" IncludeVirtualMembers="false" IncludeCompilerGeneratedMembers="false" />
+	</ItemGroup>
 
 	<ItemGroup>
-		<Publicize Include="tModLoader;ReLogic;FNA" IncludeVirtualMembers="false" IncludeCompilerGeneratedMembers="false" />
+	  <Folder Include="lib\" />
 	</ItemGroup>
 
 </Project>

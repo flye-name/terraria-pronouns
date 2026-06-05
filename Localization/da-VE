@@ -1,0 +1,18 @@
+DeathTextGeneric: {
+	Eviscerated: "{0} needs to evaluate {4} life choices"
+	Eviscerated.PlayerName: "{0}'s life choices need evaluation"
+	
+	Exsanguinated: "{0} dropped battery acid on {4} keyboard"
+	Exsanguinated.PlayerName: "battery acid was dropped on {0}'s keyboard"
+	
+	MonsterFood: "{0} doesn't realize that i am inside of {4} house right now"
+	MonsterFood.PlayerName: "i am inside of {0}'s house right now"
+	
+	Euthanized: "{0} cut the webbing of {4} fingers on a piece of paper"
+	Euthanized.PlayerName: "the webbing of {0}'s fingers was cut on a piece of paper"
+}
+
+DeathText: {
+	Drowned_2: "{0} tried to move in with {3} fish girlfriend"
+	Drowned_2.PlayerName: "idk make the fish one about the killer fish from san deigo or smt"
+}

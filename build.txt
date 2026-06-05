@@ -1,3 +1,5 @@
 displayName = tPronouns (Player Pronouns)
 author = flye
 version = 1.0
+weakReferences = GMT
+buildIgnore = .tml-build\*, lib\*, .idea\*, .vs\*, *.tmp, Properties\*, *.csproj, *.user, obj\*, bin\*, *.config, .editorconfig, TemplateEngineHost\*

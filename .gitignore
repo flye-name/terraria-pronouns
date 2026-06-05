@@ -12,3 +12,5 @@ TemplateEngineHost/
 
 # Binaries
 *.fxc
+
+lib/
