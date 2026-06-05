@@ -1,6 +1,7 @@
 using System;
 using System.Diagnostics.CodeAnalysis;
 using Humanizer;
+using Terraria.Localization;
 
 namespace PronounsMod.Core;
 
@@ -11,24 +12,31 @@ public struct Pronoun : IEquatable<Pronoun>
 		return Subject.Equals(pronoun.Subject) && Object.Equals(pronoun.Object) && Possessive.Equals(pronoun.Possessive);
 	}
 
-	public string Subject;
-	public string Object;
-	public string Possessive;
+	public void Edit(int type, string newPronoun)
+	{
+		switch (type)
+		{
+			case 0: RawSubject = newPronoun; break;
+			case 1: RawObject = newPronoun; break;
+			case 2: RawPossessive = newPronoun; break;
+		}
+	}
+
+	public string RawSubject;
+	public string RawObject;
+	public string RawPossessive;
+
+	public readonly string Subject => Language.Exists(RawSubject) ? Language.GetTextValue(RawSubject) : RawSubject;
+	public readonly string Object => Language.Exists(RawObject) ? Language.GetTextValue(RawObject) : RawObject;
+	public readonly string Possessive => Language.Exists(RawPossessive) ? Language.GetTextValue(RawPossessive) : RawPossessive;
 
 	public readonly string FullFormat => String.Join("/", [Subject, Object, Possessive]); 
 	public readonly string ChatFormat => String.Join("/", [Subject, Object]); 
 
-	public Pronoun(string s, string o, string p)
+	public Pronoun(string s, string o, string p, bool localized = false)
 	{
-		Subject = s;
-		Object = o;
-		Possessive = p;
-	}
-	
-	public Pronoun(string[] packed)
-	{
-		Subject = packed[0];
-		Object = packed[1];
-		Possessive = packed[2];
+		RawSubject = s;
+		RawObject = o;
+		RawPossessive = p;
 	}
 }

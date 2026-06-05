@@ -218,18 +218,8 @@ public class UICharacterCreationPronounsPanel : UIElement
 				string pronoun = text;
 				pronoun = text.Replace(" ", string.Empty);
 				pronoun = text.Replace("/", string.Empty);
-				switch (index)
-				{
-					case 0:
-						ModPlayer.Pronoun.Subject = pronoun;
-						break;
-					case 1:
-						ModPlayer.Pronoun.Object = pronoun;
-						break;
-					case 2:
-						ModPlayer.Pronoun.Possessive = pronoun;
-						break;
-				}
+
+				ModPlayer.Pronoun.Edit(index, pronoun);
 
 				ModPlayer.Mode = PronounMode.Specific;
 				Main.MenuUI.SetState(MainParent);

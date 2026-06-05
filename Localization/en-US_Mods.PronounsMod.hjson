@@ -1,6 +1,32 @@
 Any: any
 PlayerNameOnly: player name only
 
+Presets: {
+	They: {
+		S: they
+		O: them
+		P: their
+	}
+
+	She: {
+		S: she
+		O: her
+		P: her
+	}
+
+	He: {
+		S: he
+		O: him
+		P: his
+	}
+
+	It: {
+		S: it
+		O: it
+		P: its
+	}
+}
+
 UI: {
 	EditPronouns: Edit Pronouns
 	Pronouns: "[c/b2aacc:Pronouns]"

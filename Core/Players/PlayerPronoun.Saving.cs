@@ -7,9 +7,9 @@ public partial class PlayerPronoun : ModPlayer
 {
 	public override void SaveData(TagCompound tag)
 	{
-		tag.Set("SPronoun", Pronoun.Subject);
-		tag.Set("OPronoun", Pronoun.Object);
-		tag.Set("PPronoun", Pronoun.Possessive);
+		tag.Set("SPronoun", Pronoun.RawSubject);
+		tag.Set("OPronoun", Pronoun.RawObject);
+		tag.Set("PPronoun", Pronoun.RawPossessive);
 		tag.Set("PronounMode", (byte)Mode);
 	}
 
