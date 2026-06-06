@@ -33,7 +33,7 @@ public struct Pronoun : IEquatable<Pronoun>
 	public readonly string FullFormat => String.Join("/", [Subject, Object, Possessive]); 
 	public readonly string ChatFormat => String.Join("/", [Subject, Object]); 
 
-	public Pronoun(string s, string o, string p, bool localized = false)
+	public Pronoun(string s, string o, string p)
 	{
 		RawSubject = s;
 		RawObject = o;
