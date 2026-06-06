@@ -30,7 +30,10 @@ Presets: {
 }
 
 UI: {
+	Player: Player
+	SampleMessage: ow !
 	EditPronouns: Edit Pronouns
+	EditPronounsLarge: Edit {0}'s Pronouns
 	Pronouns: "[c/{0}:Pronouns]"
 	Blank: " "
 	Presets: Presets
