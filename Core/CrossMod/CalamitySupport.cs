@@ -9,7 +9,7 @@ public class CalamitySupport : ModSystem
 {
 	public override void OnLocalizationsLoaded()
 	{
-		if (LocalizationUtils.IsSupported("_Calamity"))
+		if (LocalizationUtils.IsSupported("CalamityMod"))
 			LocalizationUtils.ReplaceLocalization(Language.ActiveCulture.Name + "_Calamity");
 	}
 }

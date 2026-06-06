@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Text;
 using Hjson;
@@ -12,7 +14,11 @@ public static class LocalizationUtils
 {
 	public static Dictionary<string, LocalizedText> FullLocalization => LanguageManager.Instance._localizedTexts;
 
-	public static bool IsSupported(string fileName) => Language.ActiveCulture.Name == "en-US"; // Temporary
+	public static readonly Dictionary<string, string[]> SupportedLanguages = new()
+	{
+		{ "CalamityMod", ["en-US"] }
+	};
+	public static bool IsSupported(string key) => SupportedLanguages[key].Contains(Language.ActiveCulture.Name);
  	
 	public static void ReplaceLocalization(string fileName)
 	{
