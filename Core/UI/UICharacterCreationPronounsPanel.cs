@@ -73,7 +73,7 @@ public class UICharacterCreationPronounsPanel : UIElement
 			switch (i)
 			{
 				case 0:
-					inputs[i].OnUpdate += element => inputs[0].SetText(ModPlayer.Mode == PronounMode.Any ? Pronouns.AnyPreview : ModPlayer.Pronoun.Subject);
+					inputs[i].OnUpdate += element => inputs[0].SetText(ModPlayer.Mode == PronounMode.Any ? Pronouns.Any.Value : ModPlayer.Pronoun.Subject);
 					
 					inputs[i].OnLeftClick += (evt, element) =>
 					{
@@ -82,7 +82,7 @@ public class UICharacterCreationPronounsPanel : UIElement
 					break;
 				
 				case 1:
-					inputs[i].OnUpdate += element => inputs[1].SetText(ModPlayer.Mode == PronounMode.Any ? Pronouns.AnyPreview : ModPlayer.Pronoun.Object);
+					inputs[i].OnUpdate += element => inputs[1].SetText(ModPlayer.Mode == PronounMode.Any ? Pronouns.Any.Value : ModPlayer.Pronoun.Object);
 					
 					inputs[i].OnLeftClick += (evt, element) =>
 					{
@@ -91,7 +91,7 @@ public class UICharacterCreationPronounsPanel : UIElement
 					break;
 				
 				case 2: 
-					inputs[i].OnUpdate += element => inputs[2].SetText(ModPlayer.Mode == PronounMode.Any ? Pronouns.AnyPreview : ModPlayer.Pronoun.Possessive);
+					inputs[i].OnUpdate += element => inputs[2].SetText(ModPlayer.Mode == PronounMode.Any ? Pronouns.Any.Value : ModPlayer.Pronoun.Possessive);
 					
 					inputs[i].OnLeftClick += (evt, element) =>
 					{

@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework;
 using Mono.Cecil;
 using MonoMod.Cil;
 using PronounsMod.Core.Players;
+using PronounsMod.Core.Utils;
 using Terraria;
 using Terraria.GameContent.UI.Elements;
 using Terraria.IO;
@@ -42,11 +43,11 @@ public class PlayerListEdit : ModSystem
 			switch (modPlayer.Mode)
 			{
 				case PronounMode.Specific:
-					text = text + " " + $"[c/b2aacc:({modPlayer.Pronoun.FullFormat})]";
+					text = text + " " + $"({modPlayer.Pronoun.FullFormat})".FormatWithChatColor();
 					break;
 				
 				case PronounMode.Any:
-					text = text + " " + $"[c/b2aacc:({Pronouns.Any.Value})]";
+					text = text + " " + $"({Pronouns.Any.Value})".FormatWithChatColor();
 					break;
 			}
 		}

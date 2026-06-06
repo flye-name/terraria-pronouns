@@ -31,7 +31,7 @@ Presets: {
 
 UI: {
 	EditPronouns: Edit Pronouns
-	Pronouns: "[c/b2aacc:Pronouns]"
+	Pronouns: "[c/{0}:Pronouns]"
 	Blank: " "
 	Presets: Presets
 	EnterPronouns: Entered Pronouns

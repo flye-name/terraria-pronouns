@@ -5,6 +5,7 @@ using Terraria.Chat;
 using Terraria.GameContent.UI.Chat;
 using Terraria.ModLoader;
 using PronounsMod.Core.Config;
+using PronounsMod.Core.Utils;
 
 namespace PronounsMod.Core;
 
@@ -57,7 +58,7 @@ public sealed class PlayerNames : ModSystem
 		if (mode == PronounMode.Any)
 			pronoun = Pronouns.Any.Value;
 		
-		string pronounTag = $" - [c/b2aacc:{pronoun}]";
+		string pronounTag = $" - {pronoun.FormatWithChatColor()}";
 		tag = $"<{player.name + pronounTag}>";
 		text2 = tag + text2;
 	}

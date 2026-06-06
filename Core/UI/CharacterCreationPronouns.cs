@@ -80,7 +80,7 @@ public class CharacterCreationEdit : ModSystem
 			Left = StyleDimension.FromPixelsAndPercent(10f, 0.25f)
 		};
 		
-		UICharacterNameButton pronounsButton = new UICharacterNameButton(Language.GetText("Mods.PronounsMod.UI.Pronouns"), Language.GetText("Mods.PronounsMod.UI.Blank"));
+		UICharacterNameButton pronounsButton = new UICharacterNameButton(Language.GetText("Mods.PronounsMod.UI.Pronouns").WithFormatArgs(Pronouns.Color), Language.GetText("Mods.PronounsMod.UI.Blank"));
 		pronounsButton.Width = StyleDimension.FromPixelsAndPercent(-5f, 0.25f);
 		pronounsButton.HAlign = 1f;
 		foreach (var child in pronounsButton.Children)
