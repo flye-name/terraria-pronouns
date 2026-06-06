@@ -11,7 +11,7 @@ public class UIPanelLabeledButton : UIPanel
 {
 	public UIText uIText;
 	
-	public UIPanelLabeledButton(Asset<Texture2D> asset, string text, Color defaultColor, Color hoverColor, Color? borderColor = null)
+	public UIPanelLabeledButton(Asset<Texture2D> asset, string text, Color defaultColor, Color hoverColor, Color? borderColor = null, float textScale = 1f, bool largeText = false)
 	{
 		_backgroundTexture = asset;
 		_borderTexture = Assets.PanelOutline.Asset;
@@ -26,10 +26,12 @@ public class UIPanelLabeledButton : UIPanel
 			BackgroundColor = hoverColor;
 		};
 		
-		uIText = new UIText(text)
+		uIText = new UIText(text, textScale, largeText)
 		{
 			Width = StyleDimension.FromPercent(1),
-			Height = StyleDimension.FromPercent(1)
+			Top = StyleDimension.FromPercent((1f - textScale) * 0.75f),
+			Height = StyleDimension.FromPercent(1),
+			VAlign = 0.5f
 		};
 		
 		Append(uIText);
