@@ -1,5 +1,7 @@
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using PronounsMod.Core.Players;
+using PronounsMod.Core.Utils;
 using Terraria;
 using Terraria.Audio;
 using Terraria.GameContent.UI.Elements;
@@ -13,18 +15,20 @@ namespace PronounsMod.Core.UI;
 // TODO: CLEANUP
 public class UICharacterCreationPronounsPanel : UIElement
 {
-	public UICharacterCreation MainParent;
+	public UICharacterCreation? MainParent;
 	public Player player;
 	public PlayerPronoun ModPlayer => player.GetModPlayer<PlayerPronoun>();
 	
 	public readonly UIPanelLabeledButton[] inputs = new UIPanelLabeledButton[3];
 	public UIText footer;
+	public UIText footer2;
 	public UIPanel panel;
+	public UIElement container;
 
 	public static Color PanelHoverColor => new Color(100, 103, 151);
 	public static Color PanelColor => new Color(63, 82, 151) * 0.7f;
 	
-	public UICharacterCreationPronounsPanel(Player player, UICharacterCreation parent)
+	public UICharacterCreationPronounsPanel(Player player, UICharacterCreation? parent)
 	{
 		MainParent = parent;
 		this.player = player;
@@ -35,6 +39,15 @@ public class UICharacterCreationPronounsPanel : UIElement
 			Height = StyleDimension.FromPercent(1),
 			BackgroundColor = new Color(33, 43, 79) * 0.8f
 		};
+
+		container = new UIElement()
+		{
+			Width = StyleDimension.FromPercent(1),
+			Height = StyleDimension.FromPercent(0.8f),
+			VAlign = 0
+		};
+		
+		panel.Append(container);
 		
 		CreateFooter();
 
@@ -102,7 +115,7 @@ public class UICharacterCreationPronounsPanel : UIElement
 		}
 		
 		for (int i = 0; i < 3 ; i++)	
-			panel.Append(inputs[i]);
+			container.Append(inputs[i]);
 	}
 
 	void CreatePresetButtons()
@@ -139,12 +152,12 @@ public class UICharacterCreationPronounsPanel : UIElement
 			VAlign = 0.52f
 		};
 		
-		panel.Append(none);
-		panel.Append(any);
-		panel.Append(heHim);
-		panel.Append(sheHer);
-		panel.Append(theyThem);
-		panel.Append(itIts);
+		container.Append(none);
+		container.Append(any);
+		container.Append(heHim);
+		container.Append(sheHer);
+		container.Append(theyThem);
+		container.Append(itIts);
 	}
 	
 	void CreateHeaders()
@@ -183,31 +196,66 @@ public class UICharacterCreationPronounsPanel : UIElement
 			Color = Color.Lerp(Color.White, new Color(63, 65, 151, 255), 0.85f) * 0.9f
 		};
 		
-		panel.Append(presetSeparator);
-		panel.Append(customSeparator);
-		panel.Append(presets);
-		panel.Append(custom);
+		container.Append(presetSeparator);
+		container.Append(customSeparator);
+		container.Append(presets);
+		container.Append(custom);
 	}
 	
 	void CreateFooter()
 	{
+		UISlicedImage footerPanel = new UISlicedImage(Main.Assets.Request<Texture2D>("Images/UI/CharCreation/CategoryPanelHighlight"))
+		{
+			Width = StyleDimension.FromPercent(1f),
+			Height = StyleDimension.FromPixels(60f),
+			VAlign = 1f,
+			HAlign = 0.5f,
+			Color = Color.LightGray * 0.7f
+		};
+		footerPanel.SetSliceDepths(10);
+		
 		footer = new UIText(Language.GetText("Mods.PronounsMod.UI.Blank"))
 		{
 			Width = StyleDimension.FromPercent(1f),
-			VAlign = 1.15f,
-			HAlign = 0.5f
+			Left = StyleDimension.FromPixels(15f),
+			TextOriginX = 0f,
+			HAlign = 0.5f,
+			VAlign = 0.15f
 		};
 		footer.OnUpdate += element =>
 		{
+			string playerName = player.name.Length == 0 ? Language.GetTextValue("Mods.PronounsMod.UI.Player") : player.name;
 			if (ModPlayer.Mode == PronounMode.PlayerName)
-				footer.SetText($"[c/E11919:{Language.GetText("DeathTextGeneric.Brain.PlayerName").Format(player.name.Length == 0 ? "<player-name>" : player.name)}]");
+				footer.SetText($"[c/E11919:{Language.GetText("DeathTextGeneric.Brain.PlayerName").Format(playerName)}]");
 			else if (ModPlayer.Mode == PronounMode.Any)
 				footer.SetText(Language.GetText("Mods.PronounsMod.UI.AnyInChat"));
 			else
-				footer.SetText($"[c/E11919:{Language.GetText("DeathTextGeneric.Brain").Format(player.name.Length == 0 ? "<player-name>" : player.name, "", "", "", ModPlayer.Pronoun.Possessive)}]");
+				footer.SetText($"[c/E11919:{Language.GetText("DeathTextGeneric.Brain").Format(playerName, "", "", "", ModPlayer.Pronoun.Possessive)}]");
+		};
+		
+		
+		footer2 = new UIText(Language.GetText("Mods.PronounsMod.UI.Blank"))
+		{
+			Width = StyleDimension.FromPercent(1f),
+			Left = StyleDimension.FromPixels(15f),
+			TextOriginX = 0f,
+			HAlign = 0.5f,
+			VAlign = 0.8f
+		};
+		footer2.OnUpdate += element =>
+		{
+			string playerName = player.name.Length == 0 ? Language.GetTextValue("Mods.PronounsMod.UI.Player") : player.name;
+			if (ModPlayer.Mode == PronounMode.PlayerName)
+				footer2.SetText($"<{playerName}> {Language.GetTextValue("Mods.PronounsMod.UI.SampleMessage")}");
+			else if (ModPlayer.Mode == PronounMode.Any)
+				footer2.SetText($"<{playerName} - {Pronouns.Any.Value.FormatWithChatColor()}> {Language.GetTextValue("Mods.PronounsMod.UI.SampleMessage")}");
+			else
+				footer2.SetText($"<{playerName} - {ModPlayer.Pronoun.ChatFormat.FormatWithChatColor()}> {Language.GetTextValue("Mods.PronounsMod.UI.SampleMessage")}");
 		};
 
-		panel.Append(footer);
+		footerPanel.Append(footer);
+		footerPanel.Append(footer2);
+		panel.Append(footerPanel);
 	}
 
 	UIVirtualKeyboard PronounInput(int index, string label)
@@ -222,11 +270,17 @@ public class UICharacterCreationPronounsPanel : UIElement
 				ModPlayer.Pronoun.Edit(index, pronoun);
 
 				ModPlayer.Mode = PronounMode.Specific;
-				Main.MenuUI.SetState(MainParent);
+				if (MainParent != null)
+					Main.MenuUI.SetState(MainParent);
+				else
+					Main.MenuUI.SetState(Parent as UIState);
 			},
 			() =>
 			{
-				Main.MenuUI.SetState(MainParent);
+				if (MainParent != null)
+					Main.MenuUI.SetState(MainParent);
+				else
+					Main.MenuUI.SetState(Parent as UIState);
 			}, 
 			0, allowEmpty: false);
 		state.SetMaxInputLength(10);

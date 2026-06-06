@@ -72,12 +72,12 @@ public class CharacterCreationEdit : ModSystem
 	{
 		UICharacterCreationPronounsPanel pronounPanel = new UICharacterCreationPronounsPanel(self._player, self)
 		{
-			Width = StyleDimension.FromPixels(350f),
-			Height = StyleDimension.FromPixels(310),
+			Width = StyleDimension.FromPixels(460f),
+			Height = StyleDimension.FromPixels(380),
 			Top = StyleDimension.FromPixels(268),
-			HAlign = .5f,
+			HAlign = 0f,
 			VAlign = 0f,
-			Left = StyleDimension.FromPixelsAndPercent(10f, 0.25f)
+			Left = StyleDimension.FromPixelsAndPercent(4f, 0.65f)
 		};
 		
 		UICharacterNameButton pronounsButton = new UICharacterNameButton(Language.GetText("Mods.PronounsMod.UI.Pronouns").WithFormatArgs(Pronouns.Color), Language.GetText("Mods.PronounsMod.UI.Blank"));
