@@ -12,7 +12,7 @@ public static class LocalizationUtils
 {
 	public static Dictionary<string, LocalizedText> FullLocalization => LanguageManager.Instance._localizedTexts;
 
-	public static bool IsSupported(string fileName) => File.Exists(Path.Combine("Localization", Language.ActiveCulture.Name + fileName));
+	public static bool IsSupported(string fileName) => Language.ActiveCulture.Name == "en-US"; // Temporary
  	
 	public static void ReplaceLocalization(string fileName)
 	{
