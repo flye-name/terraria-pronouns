@@ -86,7 +86,7 @@ public class UICharacterCreationPronounsPanel : UIElement
 			switch (i)
 			{
 				case 0:
-					inputs[i].OnUpdate += element => inputs[0].SetText(ModPlayer.Mode == PronounMode.Any ? Pronouns.Any.Value : ModPlayer.Pronoun.Subject);
+					inputs[i].OnUpdate += element => inputs[0].SetText(ModPlayer.Mode == PronounMode.Any ? "" : ModPlayer.Pronoun.Subject);
 					
 					inputs[i].OnLeftClick += (evt, element) =>
 					{
@@ -95,7 +95,7 @@ public class UICharacterCreationPronounsPanel : UIElement
 					break;
 				
 				case 1:
-					inputs[i].OnUpdate += element => inputs[1].SetText(ModPlayer.Mode == PronounMode.Any ? Pronouns.Any.Value : ModPlayer.Pronoun.Object);
+					inputs[i].OnUpdate += element => inputs[1].SetText(ModPlayer.Mode == PronounMode.Any ? "" : ModPlayer.Pronoun.Object);
 					
 					inputs[i].OnLeftClick += (evt, element) =>
 					{
@@ -104,7 +104,7 @@ public class UICharacterCreationPronounsPanel : UIElement
 					break;
 				
 				case 2: 
-					inputs[i].OnUpdate += element => inputs[2].SetText(ModPlayer.Mode == PronounMode.Any ? Pronouns.Any.Value : ModPlayer.Pronoun.Possessive);
+					inputs[i].OnUpdate += element => inputs[2].SetText(ModPlayer.Mode == PronounMode.Any ? "" : ModPlayer.Pronoun.Possessive);
 					
 					inputs[i].OnLeftClick += (evt, element) =>
 					{
@@ -228,7 +228,7 @@ public class UICharacterCreationPronounsPanel : UIElement
 			if (ModPlayer.Mode == PronounMode.PlayerName)
 				footer.SetText($"[c/E11919:{Language.GetText("DeathTextGeneric.Brain.PlayerName").Format(playerName)}]");
 			else if (ModPlayer.Mode == PronounMode.Any)
-				footer.SetText(Language.GetText("Mods.PronounsMod.UI.AnyInChat"));
+				footer.SetText($"[c/E11919:{Language.GetText("DeathTextGeneric.Brain").Format(playerName, "", "", "", Pronouns.They.Possessive)}]");
 			else
 				footer.SetText($"[c/E11919:{Language.GetText("DeathTextGeneric.Brain").Format(playerName, "", "", "", ModPlayer.Pronoun.Possessive)}]");
 		};
