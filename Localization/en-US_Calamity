@@ -1,0 +1,63 @@
+# 1 - Subject (he/they/she/it)
+# 2 - Object (him/them/her/it)
+# 3 - Possessive (his/their/her/its)
+# 4 - Alt Object (Inputted as themselves if they, otherwise object + self (himself, herself, itself, xirself, etc.))
+
+Mods.CalamityMod.Status.Death: {
+    AstralInfection3: "{0} succumbed to {3} spaceborne pustules."
+    AstralInfection3.PlayerName: "{0} succumbed to spaceborne pustules."
+
+    AuricRebuke1: "{0}'s vital fluids violently vibrated out of {3} flesh."
+    AuricRebuke1.PlayerName: "{0}'s vital fluids violently vibrated outwards."
+
+    AuricRebuke2: "{0} did not survive {3} brief time as a supercapacitor."
+    AuricRebuke2.PlayerName: "{0} did not last long as a supercapacitor."
+
+    BrainRot2: "{0} lost the last of {3} neurons."
+    BrainRot2.PlayerName: "{0} lost the last neurons."
+
+    ChaliceOfTheBloodGod3: "{0} bit off more of {3} health bar than {1} could chew."
+    ChaliceOfTheBloodGod3.PlayerName: "{0}'s health bar was overestimated."
+
+    ChaliceOfTheBloodGod4: "{0} was abruptly reminded of {3} mortality."
+    ChaliceOfTheBloodGod4.PlayerName: "{0} was abruptly reminded of the concept of mortality."
+
+    ChaliceOfTheBloodGod7: "{0} expertly demonstrated the art of life stealing from {4}."
+    ChaliceOfTheBloodGod7.PlayerName: "{0} expertly demonstrated the art of self-life stealing."
+
+    ChaliceOfTheBloodGod9: "{0} brought the Chalice to {3} lips, only to find it empty."
+    ChaliceOfTheBloodGod9.PlayerName: "{0} realized that the Chalice was empty."
+
+    ChaliceOfTheBloodGod10: "{0}'s careless injuries caught up with {2}."
+    ChaliceOfTheBloodGod10.PlayerName: "The careless injuries caught up with {0}."
+
+    ChaliceOfTheBloodGod13: "{0} could only give {3} life in exchange for the blood price."
+    ChaliceOfTheBloodGod13.PlayerName: "{0} could only give up life in exchange for the blood price."
+
+    ChaliceOfTheBloodGod14: "{0} sank to {3} knees, dissolving in a pool of {3} own blood."
+    ChaliceOfTheBloodGod14.PlayerName: "{0} dissolved in a pool of blood."
+
+    ChaliceOfTheBloodGod15: "{0} lost it all in {3} petty gamble with the Blood God."
+    ChaliceOfTheBloodGod15.PlayerName: "{0} lost it all in a petty gamble with the Blood God."
+
+    ChaliceOfTheBloodGod17: "{0} crumpled, weakly reaching for {3} already-stopped heart."
+    ChaliceOfTheBloodGod17.PlayerName: "{0} crumpled, weakly reaching for an already-stopped heart."
+
+    ChaliceOfTheBloodGodUnequip: "{0} violated {3} pact with the Blood God."
+    ChaliceOfTheBloodGodUnequip.PlayerName: "{0} violated a pact with the Blood God."
+
+    HeavyBleeding3: "{0} bled profusely to {3} last breath."
+    HeavyBleeding3.PlayerName: "{0} bled profusely."
+
+    HolyFlames1: "{0} fell prey to {3} sins."
+    HolyFlames1.PlayerName: "{0} fell prey to sins."
+
+    ProvidenceAntiHealing: "{0} was purged of {3} unworthy existence."
+    ProvidenceAntiHealing.PlayerName: "{0} was purged of an unworthy existence."
+
+    StaticDischarge3: "{0} was shocked by {3} newfound condition."
+    StaticDischarge3.PlayerName: "{0} was shocked by a newfound condition."
+
+    VulnerabilityHexAcceptance: "{0} couldn't accept {3} bleak, uncaring reality."
+    VulnerabilityHexAcceptance.PlayerName: "{0} couldn't accept the bleak, uncaring reality."
+}

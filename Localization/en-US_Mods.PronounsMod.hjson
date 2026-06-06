@@ -1,5 +1,7 @@
 Any: any
 PlayerNameOnly: player name only
+Self: "{0}self"
+Themselves: themselves
 
 Presets: {
 	They: {
