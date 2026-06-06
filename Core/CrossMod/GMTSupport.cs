@@ -6,6 +6,7 @@ using GMT.Common;
 using GMT.Revamps.ForTheWorthy;
 using Hjson;
 using Newtonsoft.Json.Linq;
+using PronounsMod.Core.Utils;
 using Terraria;
 using Terraria.Localization;
 using Terraria.ModLoader;
@@ -31,6 +32,6 @@ public class GMTSupport : ModSystem
 		orig(force);
 		
 		if (shouldReplace)
-			DaveLangSupport.ReplaceDaveLangEntries();
+			LocalizationUtils.ReplaceLocalization("da-VE");
 	}
 }
