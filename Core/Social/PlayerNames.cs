@@ -43,7 +43,7 @@ public sealed class PlayerNames : ModSystem
 			return;
 
 		PronounMode mode = modPlayer.Mode;
-		if (mode == PronounMode.None || mode == PronounMode.PlayerName || string.IsNullOrWhiteSpace(modPlayer.Pronoun.ChatFormat))
+		if (mode == PronounMode.None || string.IsNullOrWhiteSpace(modPlayer.Pronoun.ChatFormat))
 			return;
 		
 		string tag = NameTagHandler.GenerateTag(player.name);
