@@ -2,6 +2,6 @@ displayName = tPronouns (Player Pronouns)
 author = flye
 version = 1.0
 weakReferences = CalamityMod, GMT
-buildIgnore = .tml-build\*, lib\*, .idea\*, .vs\*, *.tmp, Properties\*, *.csproj, *.user, obj\*, bin\*, *.config, .editorconfig, TemplateEngineHost\*
+buildIgnore = Demonstrations\*, .tml-build\*, lib\*, .idea\*, .vs\*, *.tmp, Properties\*, *.csproj, *.user, obj\*, bin\*, *.config, .editorconfig, TemplateEngineHost\*
 
 sortAfter = CalamityMod, GMT
