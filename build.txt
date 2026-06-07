@@ -2,6 +2,7 @@ displayName = tPronouns (Player Pronouns)
 author = flye
 version = 1.0
 weakReferences = CalamityMod, GMT
+homepage = https://github.com/flye-name/terraria-pronouns
 buildIgnore = Demonstrations\*, .tml-build\*, lib\*, .idea\*, .vs\*, *.tmp, Properties\*, *.csproj, *.user, obj\*, bin\*, *.config, .editorconfig, TemplateEngineHost\*
 
 sortAfter = CalamityMod, GMT

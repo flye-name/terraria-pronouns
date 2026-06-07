@@ -1,1 +1,8 @@
-Modify this file with a description of your mod.
+FEATURES:
+- Pronouns per player, can be freely edited
+
+- Custom pronouns & "Any" as preferred pronouns
+
+- Pronouns displayed in chat, death messages, the player selection menu, and when hovering over players in multiplayer
+
+For more details please visit the Workshop page.

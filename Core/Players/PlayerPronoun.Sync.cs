@@ -12,9 +12,9 @@ public partial class PlayerPronoun
 		ModPacket packet = Mod.GetPacket();
 		packet.Write((byte)Message.SyncPronouns);
 		packet.Write((byte)Player.whoAmI);
-		packet.WriteNullTerminatedString(Pronoun.RawSubject);
-		packet.WriteNullTerminatedString(Pronoun.RawObject);
-		packet.WriteNullTerminatedString(Pronoun.RawPossessive);
+		packet.Write(Pronoun.RawSubject);
+		packet.Write(Pronoun.RawObject);
+		packet.Write(Pronoun.RawPossessive);
 		packet.Write((byte)Mode);
 		packet.Send(toWho, fromWho);
 	}
@@ -28,7 +28,7 @@ public partial class PlayerPronoun
 			shouldDoAnything = false;
 
 		byte index = reader.ReadByte();
-		Pronoun pronoun = new Pronoun(reader.ReadNullTerminatedString(), reader.ReadNullTerminatedString(), reader.ReadNullTerminatedString());
+		Pronoun pronoun = new Pronoun(reader.ReadString(), reader.ReadString(), reader.ReadString());
 		PronounMode mode = (PronounMode)reader.ReadByte();
 
 		if (index == Main.myPlayer)

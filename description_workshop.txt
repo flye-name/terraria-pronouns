@@ -1,1 +1,24 @@
-This description will show up on the steam page, check out https://steamcommunity.com/comment/Guide/formattinghelp.
+[h2][url=https://github.com/flye-name/terraria-pronouns]Source Code[/url][/h2]
+
+[h1]NOTES:[/h1] [list]
+[*] [h2]This mod is fully built with _localization_ in mind, if you want to translate the mod [read this](https://github.com/flye-name/terraria-pronouns/blob/master/TRANSLATION.md).[/h2]
+
+[*] Compatibility with other mods that have death messages with pronouns (e.g. "Player thought _they_ could fly") is trivial.
+
+[*] Death messages that are currently adjusted by this mod are _**Calamity**'s_ and _**GaMeTerraria**'s_ (Dave Language).
+
+[*] If you know of other mods that include such death messages, [create an issue to suggest them](https://github.com/flye-name/terraria-pronouns/issues).
+
+[*] If you run across any bugs, report them as [issues](https://github.com/flye-name/terraria-pronouns/issues).
+[/list]
+
+[h1]FEATURES:[/h1][list]
+[*] Pronouns per player, can be freely edited
+
+[*] Custom pronouns & "Any" as preferred pronouns
+
+[*] Pronouns displayed in chat, death messages, the player selection menu, and when hovering over players in multiplayer
+[/list]
+[img]https://github.com/flye-name/terraria-pronouns/blob/18c7d1e464c3bf3744538367efda41106cc00927/Demonstrations/Chat.png[/img]
+
+Thanks to [url=https://github.com/ink-zoey]Zoey[/url] for contributing to this project (Icon & vanilla death message support).
