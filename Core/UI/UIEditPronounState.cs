@@ -14,6 +14,7 @@ public class UIEditPronounState : UIState
 	public PlayerFileData data;
 	public Pronoun oldPronoun;
 	public PronounMode oldMode;
+	public int gracePeriod;
 	public UIEditPronounState(PlayerFileData data, Pronoun oldPronoun, PronounMode oldMode)
 	{
 		this.data = data;
@@ -27,6 +28,12 @@ public class UIEditPronounState : UIState
 	public override void Update(GameTime gameTime)
 	{
 		base.Update(gameTime);
+		
+		if (!Main.keyState.IsKeyDown(Keys.Enter) && !Main.keyState.IsKeyDown(Keys.Escape))
+			gracePeriod--;
+
+		if (gracePeriod > 0)
+			return;
 
 		if (Main.keyState.IsKeyDown(Keys.Enter))
 		{

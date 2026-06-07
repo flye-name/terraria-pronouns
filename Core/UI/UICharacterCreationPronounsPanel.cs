@@ -277,18 +277,26 @@ public class UICharacterCreationPronounsPanel : UIElement
 
 				ModPlayer.Pronoun.Edit(index, pronoun);
 
-				ModPlayer.Mode = PronounMode.Specific;
+				if (ModPlayer.Mode != PronounMode.Any)
+					ModPlayer.Mode = PronounMode.Specific;
+				
 				if (MainParent != null)
 					Main.MenuUI.SetState(MainParent);
 				else
+				{
 					Main.MenuUI.SetState(Parent as UIState);
+					(Parent as UIEditPronounState)?.gracePeriod = 3;
+				}
 			},
 			() =>
 			{
 				if (MainParent != null)
 					Main.MenuUI.SetState(MainParent);
 				else
+				{
 					Main.MenuUI.SetState(Parent as UIState);
+					(Parent as UIEditPronounState)?.gracePeriod = 3;
+				}
 			}, 
 			0, allowEmpty: false);
 		state.SetMaxInputLength(10);
