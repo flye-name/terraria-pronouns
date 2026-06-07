@@ -47,8 +47,8 @@ public class CrossModDeathMessages : ModSystem
 		Pronoun pronoun = player.Pronoun;
 		
 		string selfPronoun = pronoun.Equals(Pronouns.They)
-			? Language.GetTextValue("Mods.PronounsMod.Themselves")
-			: Language.GetText("Mods.PronounsMod.Self").Format(pronoun.Object);
+			? Language.GetTextValue("Mods.PronounsMod.Common.Themselves")
+			: Language.GetText("Mods.PronounsMod.Common.Self").Format(pronoun.Object);
 
 		if (SupportedKeysVariant1.Any(originalKey.StartsWith))
 		{

@@ -214,7 +214,7 @@ public class UICharacterCreationPronounsPanel : UIElement
 		};
 		footerPanel.SetSliceDepths(10);
 		
-		footer = new UIText(Language.GetText("Mods.PronounsMod.UI.Blank"))
+		footer = new UIText(Language.GetText("Mods.PronounsMod.Common.Blank"))
 		{
 			Width = StyleDimension.FromPercent(1f),
 			Left = StyleDimension.FromPixels(15f),
@@ -224,17 +224,21 @@ public class UICharacterCreationPronounsPanel : UIElement
 		};
 		footer.OnUpdate += element =>
 		{
-			string playerName = player.name.Length == 0 ? Language.GetTextValue("Mods.PronounsMod.UI.Player") : player.name;
+			string oldText = footer._visibleText;
+			string playerName = player.name.Length == 0 ? Language.GetTextValue("Mods.PronounsMod.Common.Player") : player.name;
 			if (ModPlayer.Mode == PronounMode.PlayerName)
 				footer.SetText($"[c/E11919:{Language.GetText("DeathTextGeneric.Brain.PlayerName").Format(playerName)}]");
 			else if (ModPlayer.Mode == PronounMode.Any)
 				footer.SetText($"[c/E11919:{Language.GetText("DeathTextGeneric.Brain").Format(playerName, "", "", "", Pronouns.They.Possessive)}]");
 			else
 				footer.SetText($"[c/E11919:{Language.GetText("DeathTextGeneric.Brain").Format(playerName, "", "", "", ModPlayer.Pronoun.Possessive)}]");
+			
+			if (!footer._visibleText.Equals(oldText))
+				footer.Recalculate();
 		};
 		
 		
-		footer2 = new UIText(Language.GetText("Mods.PronounsMod.UI.Blank"))
+		footer2 = new UIText(Language.GetText("Mods.PronounsMod.Common.Blank"))
 		{
 			Width = StyleDimension.FromPercent(1f),
 			Left = StyleDimension.FromPixels(15f),
@@ -244,13 +248,17 @@ public class UICharacterCreationPronounsPanel : UIElement
 		};
 		footer2.OnUpdate += element =>
 		{
-			string playerName = player.name.Length == 0 ? Language.GetTextValue("Mods.PronounsMod.UI.Player") : player.name;
+			string oldText = footer2._visibleText;
+			string playerName = player.name.Length == 0 ? Language.GetTextValue("Mods.PronounsMod.Common.Player") : player.name;
 			if (ModPlayer.Mode == PronounMode.PlayerName)
 				footer2.SetText($"<{playerName}> {Language.GetTextValue("Mods.PronounsMod.UI.SampleMessage")}");
 			else if (ModPlayer.Mode == PronounMode.Any)
 				footer2.SetText($"<{playerName} - {Pronouns.Any.Value.FormatWithChatColor()}> {Language.GetTextValue("Mods.PronounsMod.UI.SampleMessage")}");
 			else
 				footer2.SetText($"<{playerName} - {ModPlayer.Pronoun.ChatFormat.FormatWithChatColor()}> {Language.GetTextValue("Mods.PronounsMod.UI.SampleMessage")}");
+			
+			if (!footer2._visibleText.Equals(oldText))
+				footer2.Recalculate();
 		};
 
 		footerPanel.Append(footer);

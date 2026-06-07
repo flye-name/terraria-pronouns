@@ -1,44 +1,45 @@
-Any: any
-PlayerNameOnly: player name only
-Self: "{0}self"
-Themselves: themselves
+Common: {
+	Player: Player
+	Blank: " "
+	Any: any
+	Self: "{0}self"
+	Themselves: themselves
+}
 
 Presets: {
 	They: {
-		S: they
-		O: them
-		P: their
+		Subject: they
+		Object: them
+		Possessive: their
 	}
 
 	She: {
-		S: she
-		O: her
-		P: her
+		Subject: she
+		Object: her
+		Possessive: her
 	}
 
 	He: {
-		S: he
-		O: him
-		P: his
+		Subject: he
+		Object: him
+		Possessive: his
 	}
 
 	It: {
-		S: it
-		O: it
-		P: its
+		Subject: it
+		Object: it
+		Possessive: its
 	}
 }
 
 UI: {
-	Player: Player
-	SampleMessage: ow !
+	Presets: Presets
+	PlayerNameOnly: player name only
+	Pronouns: "[c/{0}:Pronouns]"
 	EditPronouns: Edit Pronouns
 	EditPronounsLarge: Edit {0}'s Pronouns
-	Pronouns: "[c/{0}:Pronouns]"
-	Blank: " "
-	Presets: Presets
 	EnterPronouns: Entered Pronouns
-	AnyInChat: (Chat pronouns will be displayed as 'any')
+	SampleMessage: ow !
 	EnterSubject: Enter subject pronoun (he, she, they, etc.)
 	EnterObject: Enter object pronoun (him, her, them, etc.)
 	EnterPossessive: Enter possessive pronoun (his, her, their, etc.)
@@ -58,17 +59,17 @@ Configs: {
 		Tooltip: ""
 
 		Normal: {
-			Label: Normal: <player-name - they/them>
+			Label: Normal: <Player - they/them>
 			Tooltip: ""
 		}
 
 		Short: {
-			Label: Short: <player-name - they>
+			Label: Short: <Player - they>
 			Tooltip: ""
 		}
 
 		None: {
-			Label: None: <player-name>
+			Label: None: <Player>
 			Tooltip: ""
 		}
 	}

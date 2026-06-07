@@ -18,9 +18,9 @@ public class UICharacterCreationPronounButton : UIElement
 
 		string text = pronoun.FullFormat;
 		if (mode == PronounMode.Any)
-			text = Language.GetTextValue("Mods.PronounsMod.Any");
+			text = Pronouns.Any.Value;
 		if (mode == PronounMode.PlayerName)
-			text = Language.GetTextValue("Mods.PronounsMod.PlayerNameOnly");
+			text = Language.GetTextValue("Mods.PronounsMod.UI.PlayerNameOnly");
 		
 		UIPanelLabeledButton panel = new UIPanelLabeledButton(Assets.EmptyPanel.Asset, text, UICharacterCreationPronounsPanel.PanelColor, UICharacterCreationPronounsPanel.PanelHoverColor)
 		{
