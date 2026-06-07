@@ -12,7 +12,7 @@ If you don't know how to do that:
    1. Both the `.hjson` files and the ones without extensions are translated as normal, simply copy the file and replace the en-US prefix in the file name with the new language.
 3. Create a pull request in **this repository**
 
-![pr](https://github.com/flye-name/terraria-pronouns/blob/717a7fe5321097bbfb567f9dac8ec434a5c36ee4/Demonstrations/Fork.png)
+![pr](https://github.com/flye-name/terraria-pronouns/blob/00f8a1b72b27d1dfe7e86f25af7e3e4b77b0ff88/Demonstrations/PR.png)
 
 4. Click **"compare across forks"** if available
 5. Review changed files and submit
