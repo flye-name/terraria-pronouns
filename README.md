@@ -6,6 +6,7 @@ This project is intended as a social mod for Terraria, adding pronouns to player
 - ### Compatibility with other mods that have death messages with pronouns (e.g. "Player thought _they_ could fly") is trivial.
   -  Death messages that are currently adjusted by this mod are _**Calamity**'s_ and _**GaMeTerraria**'s_ (Dave Language).
      -  If you know of other mods that include such death messages, [create an issue to suggest them](https://github.com/flye-name/terraria-pronouns/issues).
+- ### If you run across any bugs, report them as [issues](https://github.com/flye-name/terraria-pronouns/issues).
     
 # Features
 ### Pronouns selection during character creation
