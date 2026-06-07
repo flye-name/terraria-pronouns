@@ -50,15 +50,15 @@ public class CharacterCreationEdit : ModSystem
 		c.GotoNext(MoveType.After, i => i.MatchNewobj<UICharacterNameButton>()); 
 		
 		c.GotoNext(MoveType.After, i => i.MatchStfld<UIElement>(nameof(UIElement.Width)));
-		c.GotoPrev(MoveType.Before, i => i.MatchLdcR4(1)); // Width percentage
+		c.GotoPrev(MoveType.After, i => i.MatchLdcR4(1)); // Width percentage
 
-		c.Remove();
+		c.EmitPop();
 		c.EmitLdcR4(0.75f);
 		
 		c.GotoNext(MoveType.After, i => i.MatchStfld<UIElement>(nameof(UIElement.HAlign))); 
-		c.GotoPrev(MoveType.Before, i => i.MatchLdcR4(0.5f)); // HAlign
+		c.GotoPrev(MoveType.After, i => i.MatchLdcR4(0.5f)); // HAlign
 
-		c.Remove();
+		c.EmitPop();
 		c.EmitLdcR4(0);
 
 		c.GotoNext(MoveType.After, i => i.MatchCallvirt<UIElement>(nameof(UIElement.Append)));

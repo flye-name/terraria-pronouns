@@ -32,6 +32,9 @@ public class UICharacterCreationPronounsPanel : UIElement
 	{
 		MainParent = parent;
 		this.player = player;
+
+		ModPlayer.Mode = PronounMode.Specific;
+		ModPlayer.Pronoun = Pronouns.They;
 		
 		panel = new UIPanel()
 		{
