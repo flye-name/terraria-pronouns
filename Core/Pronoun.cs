@@ -7,7 +7,7 @@ namespace PronounsMod.Core;
 
 public struct Pronoun : IEquatable<Pronoun>
 {
-	public bool Equals(Pronoun pronoun)
+	public readonly bool Equals(Pronoun pronoun)
 	{
 		return Subject.Equals(pronoun.Subject) && Object.Equals(pronoun.Object) && Possessive.Equals(pronoun.Possessive);
 	}
@@ -30,8 +30,42 @@ public struct Pronoun : IEquatable<Pronoun>
 	public readonly string Object => Language.Exists(RawObject) ? Language.GetTextValue(RawObject) : RawObject;
 	public readonly string Possessive => Language.Exists(RawPossessive) ? Language.GetTextValue(RawPossessive) : RawPossessive;
 
-	public readonly string FullFormat => String.Join("/", [Subject, Object, Possessive]); 
-	public readonly string ChatFormat => String.Join("/", [Subject, Object]); 
+	public readonly string FullFormat
+	{
+		get
+		{
+			if (Subject.Equals(Object) && !Subject.Equals(Possessive))
+				return string.Join("/", [Subject, Object, Possessive]);
+			
+			if (string.IsNullOrWhiteSpace(ChatFormat))
+				return Possessive;
+
+			if (string.IsNullOrWhiteSpace(Possessive))
+				return ChatFormat;
+			
+			return String.Join("/", [ChatFormat, Possessive]);
+		}
+	}
+
+	public readonly string ChatFormat
+	{
+		get
+		{
+			if (Subject.Equals(Object) && !Subject.Equals(Possessive))
+				return string.Join("/", [Subject, Possessive]);
+			
+			if (string.IsNullOrWhiteSpace(Subject) && !string.IsNullOrWhiteSpace(Object))
+				return Object;
+			
+			if (!string.IsNullOrWhiteSpace(Subject) && string.IsNullOrWhiteSpace(Object))
+				return Subject;
+			
+			if (string.IsNullOrWhiteSpace(Subject) && string.IsNullOrWhiteSpace(Object))
+				return string.Empty;
+			
+			return String.Join("/", [Subject, Object]);
+		}
+	}
 
 	public Pronoun(string s, string o, string p)
 	{

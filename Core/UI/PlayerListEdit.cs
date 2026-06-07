@@ -7,6 +7,7 @@ using PronounsMod.Core.Utils;
 using Terraria;
 using Terraria.GameContent.UI.Elements;
 using Terraria.IO;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace PronounsMod.Core.UI;
@@ -43,11 +44,16 @@ public class PlayerListEdit : ModSystem
 			switch (modPlayer.Mode)
 			{
 				case PronounMode.Specific:
-					text = text + " " + $"({modPlayer.Pronoun.FullFormat})".FormatWithChatColor();
+					if (!string.IsNullOrWhiteSpace(modPlayer.Pronoun.FullFormat))
+						text = text + " " + $"({modPlayer.Pronoun.FullFormat})".FormatWithChatColor();
 					break;
 				
 				case PronounMode.Any:
 					text = text + " " + $"({Pronouns.Any.Value})".FormatWithChatColor();
+					break;
+				
+				case PronounMode.None:
+					text = text + " " + Language.GetTextValue("Mods.PronounsMod.UI.Unassigned").FormatWithChatColor();
 					break;
 			}
 		}

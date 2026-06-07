@@ -62,7 +62,13 @@ public class UICharacterCreationPronounsPanel : UIElement
 
 	void CreateInput(int i)
 	{
-		inputs[i] = new UIPanelLabeledButton(Assets.EmptyPanel.Asset, ModPlayer.Pronoun.FullFormat.Split('/')[i], PanelColor, PanelHoverColor)
+		string[] pronouns = ModPlayer.Pronoun.FullFormat.Split('/');
+
+		string pronoun = string.Empty;
+		if (pronouns.Length > i)
+			pronoun = pronouns[i];
+		
+		inputs[i] = new UIPanelLabeledButton(Assets.EmptyPanel.Asset, pronoun, PanelColor, PanelHoverColor)
 		{
 			Width = StyleDimension.FromPixelsAndPercent(-5f, .33f),
 			Height = StyleDimension.FromPixelsAndPercent(-5f, 0.175f),
@@ -86,7 +92,7 @@ public class UICharacterCreationPronounsPanel : UIElement
 			switch (i)
 			{
 				case 0:
-					inputs[i].OnUpdate += element => inputs[0].SetText(ModPlayer.Mode == PronounMode.Any ? "" : ModPlayer.Pronoun.Subject);
+					inputs[i].OnUpdate += element => inputs[0].SetText(ModPlayer.Pronoun.Subject);
 					
 					inputs[i].OnLeftClick += (evt, element) =>
 					{
@@ -95,7 +101,7 @@ public class UICharacterCreationPronounsPanel : UIElement
 					break;
 				
 				case 1:
-					inputs[i].OnUpdate += element => inputs[1].SetText(ModPlayer.Mode == PronounMode.Any ? "" : ModPlayer.Pronoun.Object);
+					inputs[i].OnUpdate += element => inputs[1].SetText(ModPlayer.Pronoun.Object);
 					
 					inputs[i].OnLeftClick += (evt, element) =>
 					{
@@ -104,7 +110,7 @@ public class UICharacterCreationPronounsPanel : UIElement
 					break;
 				
 				case 2: 
-					inputs[i].OnUpdate += element => inputs[2].SetText(ModPlayer.Mode == PronounMode.Any ? "" : ModPlayer.Pronoun.Possessive);
+					inputs[i].OnUpdate += element => inputs[2].SetText(ModPlayer.Pronoun.Possessive);
 					
 					inputs[i].OnLeftClick += (evt, element) =>
 					{
@@ -144,12 +150,12 @@ public class UICharacterCreationPronounsPanel : UIElement
 		UICharacterCreationPronounButton none = new UICharacterCreationPronounButton(Pronouns.None, ModPlayer, this, PronounMode.PlayerName)
 		{
 			HAlign = 0f,
-			VAlign = 0.52f
+			VAlign = 0.59f
 		};
 		UICharacterCreationPronounButton any = new UICharacterCreationPronounButton(Pronouns.They, ModPlayer, this, PronounMode.Any)
 		{
 			HAlign = 1f,
-			VAlign = 0.52f
+			VAlign = 0.59f
 		};
 		
 		container.Append(none);
@@ -186,6 +192,16 @@ public class UICharacterCreationPronounsPanel : UIElement
 			Color = Color.Lerp(Color.White, new Color(63, 65, 151, 255), 0.85f) * 0.9f
 		};
 
+		UIHorizontalSeparator specialSeparator = new UIHorizontalSeparator()
+		{
+			Width = StyleDimension.FromPixelsAndPercent(-25f, 1f),
+			Top = StyleDimension.FromPixelsAndPercent(8f, 0.43f),
+			Left = new StyleDimension(-2.5f, 0f),
+			VAlign = 0f,
+			HAlign = 0.5f,
+			Color = Color.Lerp(Color.White, new Color(63, 65, 151, 255), 0.85f) * 0.9f
+		};
+
 		UIHorizontalSeparator customSeparator = new UIHorizontalSeparator()
 		{
 			Width = StyleDimension.FromPixelsAndPercent(-25f, 1f),
@@ -197,6 +213,7 @@ public class UICharacterCreationPronounsPanel : UIElement
 		};
 		
 		container.Append(presetSeparator);
+		container.Append(specialSeparator);
 		container.Append(customSeparator);
 		container.Append(presets);
 		container.Append(custom);
@@ -226,10 +243,8 @@ public class UICharacterCreationPronounsPanel : UIElement
 		{
 			string oldText = footer._visibleText;
 			string playerName = player.name.Length == 0 ? Language.GetTextValue("Mods.PronounsMod.Common.Player") : player.name;
-			if (ModPlayer.Mode == PronounMode.PlayerName)
+			if (ModPlayer.ShouldUsePlayerNameDeathFormat())
 				footer.SetText($"[c/E11919:{Language.GetText("DeathTextGeneric.Brain.PlayerName").Format(playerName)}]");
-			else if (ModPlayer.Mode == PronounMode.Any)
-				footer.SetText($"[c/E11919:{Language.GetText("DeathTextGeneric.Brain").Format(playerName, "", "", "", Pronouns.They.Possessive)}]");
 			else
 				footer.SetText($"[c/E11919:{Language.GetText("DeathTextGeneric.Brain").Format(playerName, "", "", "", ModPlayer.Pronoun.Possessive)}]");
 			
@@ -250,10 +265,10 @@ public class UICharacterCreationPronounsPanel : UIElement
 		{
 			string oldText = footer2._visibleText;
 			string playerName = player.name.Length == 0 ? Language.GetTextValue("Mods.PronounsMod.Common.Player") : player.name;
-			if (ModPlayer.Mode == PronounMode.PlayerName)
-				footer2.SetText($"<{playerName}> {Language.GetTextValue("Mods.PronounsMod.UI.SampleMessage")}");
-			else if (ModPlayer.Mode == PronounMode.Any)
+			if (ModPlayer.Mode == PronounMode.Any)
 				footer2.SetText($"<{playerName} - {Pronouns.Any.Value.FormatWithChatColor()}> {Language.GetTextValue("Mods.PronounsMod.UI.SampleMessage")}");
+			else if (string.IsNullOrWhiteSpace(ModPlayer.Pronoun.ChatFormat))
+				footer2.SetText($"<{playerName}> {Language.GetTextValue("Mods.PronounsMod.UI.SampleMessage")}");
 			else
 				footer2.SetText($"<{playerName} - {ModPlayer.Pronoun.ChatFormat.FormatWithChatColor()}> {Language.GetTextValue("Mods.PronounsMod.UI.SampleMessage")}");
 			
@@ -298,7 +313,7 @@ public class UICharacterCreationPronounsPanel : UIElement
 					(Parent as UIEditPronounState)?.gracePeriod = 3;
 				}
 			}, 
-			0, allowEmpty: false);
+			0, allowEmpty: true);
 		state.SetMaxInputLength(10);
 
 		return state;

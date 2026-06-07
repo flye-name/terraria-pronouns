@@ -166,7 +166,7 @@ public sealed class DeathMessages : ModSystem
             Player player = Main.player[targetPlayer];
 
             if (!player.TryGetModPlayer<PlayerPronoun>(out var modPlayer)
-             || modPlayer.Mode != PronounMode.PlayerName
+             || !modPlayer.ShouldUsePlayerNameDeathFormat()
              || !Language.Exists($"{key}.{player_name_key}"))
             {
                 return key;

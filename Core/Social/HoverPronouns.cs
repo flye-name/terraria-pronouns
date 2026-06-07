@@ -41,7 +41,7 @@ public class HoverPronouns : ModSystem
 		Player player = Main.player[playerIndex];
 		PlayerPronoun modPlayer = player.GetModPlayer<PlayerPronoun>();
 
-		if (string.IsNullOrEmpty(modPlayer.Pronoun.Subject) || modPlayer.Mode == PronounMode.PlayerName)
+		if (string.IsNullOrWhiteSpace(modPlayer.Pronoun.ChatFormat) || modPlayer.ShouldUsePlayerNameDeathFormat())
 			return;
 		
 		string pronoun = modPlayer.Pronoun.ChatFormat;

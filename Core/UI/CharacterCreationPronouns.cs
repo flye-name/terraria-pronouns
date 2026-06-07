@@ -38,6 +38,7 @@ public class CharacterCreationEdit : ModSystem
 		};
 		
 		Assets.EmptyPanel.Asset.SetToLoadingState();
+		Assets.EmptyPanelAlt.Asset.SetToLoadingState();
 		Assets.FullPanel.Asset.SetToLoadingState();
 		Assets.PanelOutline.Asset.SetToLoadingState();
 	}

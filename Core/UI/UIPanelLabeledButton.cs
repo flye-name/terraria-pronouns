@@ -17,6 +17,8 @@ public class UIPanelLabeledButton : UIPanel
 		_borderTexture = Assets.PanelOutline.Asset;
 		BorderColor = borderColor ?? Color.Transparent;
 		
+		BackgroundColor = defaultColor;
+		
 		OnMouseOut += (evt, element) =>
 		{
 			BackgroundColor = defaultColor;

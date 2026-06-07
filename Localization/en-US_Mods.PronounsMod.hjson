@@ -33,12 +33,14 @@ Presets: {
 }
 
 UI: {
+	Unassigned: (no assigned pronouns!)
 	Presets: Presets
-	PlayerNameOnly: player name only
+	Special: Special
+	PlayerNameOnly: Clear
 	Pronouns: "[c/{0}:Pronouns]"
 	EditPronouns: Edit Pronouns
 	EditPronounsLarge: Edit {0}'s Pronouns
-	EnterPronouns: Entered Pronouns
+	EnterPronouns: Pronouns
 	SampleMessage: ow !
 	EnterSubject: Enter subject pronoun (he, she, they, etc.)
 	EnterObject: Enter object pronoun (him, her, them, etc.)

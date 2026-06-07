@@ -52,7 +52,7 @@ public class CrossModDeathMessages : ModSystem
 
 		if (SupportedKeysVariant1.Any(originalKey.StartsWith))
 		{
-			string key = player.Mode == PronounMode.PlayerName ? originalKey + ".PlayerName" : originalKey;
+			string key = player.ShouldUsePlayerNameDeathFormat() ? originalKey + ".PlayerName" : originalKey;
 			LocalizedText localizedDeath = Language.GetText(key);
 			
 			NetworkText formattedDeathText = localizedDeath.ToNetworkText(self.name, pronoun.Subject, pronoun.Object, pronoun.Possessive, selfPronoun);
